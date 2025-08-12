@@ -179,7 +179,7 @@
             <label for="phone" class="block mb-2 font-medium">رقم الهاتف <span class="text-red-400">*</span></label>
             <input type="tel" id="phone" name="phone" required
                    class="w-full form-input px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold"
-                   placeholder="01XXXXXXXXX"/>
+                   placeholder="أدخل رقمك (مثلاً: 0501234567)" />
           </div>
 
           <div class="mb-6">
@@ -227,21 +227,26 @@
             </select>
           </div>
 
-          <!-- اختيار الوقت كأرقام -->
+          <!-- اختيار الوقت بنظام 12 ساعة (ص/م) -->
           <div class="mb-8">
-            <label for="time" class="block mb-2 font-medium">اختر رقم الفترة الزمنية (1 إلى 9)</label>
+            <label for="time" class="block mb-2 font-medium">اختر الوقت المناسب</label>
             <select id="time" name="time" required
                     class="w-full form-input px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold">
-              <option value="">اختر رقم الفترة</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
-              <option value="8">8</option>
-              <option value="9">9</option>
+              <option value="">اختر الوقت</option>
+              <option value="10:00 ص">10:00 ص</option>
+              <option value="11:00 ص">11:00 ص</option>
+              <option value="12:00 م">12:00 م</option>
+              <option value="1:00 م">1:00 م</option>
+              <option value="2:00 م">2:00 م</option>
+              <option value="3:00 م">3:00 م</option>
+              <option value="4:00 م">4:00 م</option>
+              <option value="5:00 م">5:00 م</option>
+              <option value="6:00 م">6:00 م</option>
+              <option value="7:00 م">7:00 م</option>
+              <option value="8:00 م">8:00 م</option>
+              <option value="9:00 م">9:00 م</option>
+              <option value="10:00 م">10:00 م</option>
+              <option value="11:00 م">11:00 م</option>
             </select>
           </div>
 
@@ -274,54 +279,57 @@
       const time = document.getElementById("time").value;
       const location = document.getElementById("location").value;
 
+      // التحقق من الاسم
       if (!name) {
         alert("الرجاء إدخال الاسم الكامل.");
         e.preventDefault();
         return;
       }
+
+      // التحقق من رقم الهاتف: 8 إلى 15 رقم فقط
       if (!phone) {
         alert("الرجاء إدخال رقم الهاتف.");
         e.preventDefault();
         return;
       }
-      if (!/^01[0-9]{9}$/.test(phone)) {
-        alert("الرجاء إدخال رقم هاتف مصري صحيح (11 رقم يبدأ بـ 01).");
+
+      if (!/^[0-9]{8,15}$/.test(phone)) {
+        alert("الرجاء إدخال رقم هاتف صحيح (من 8 إلى 15 رقم).");
         e.preventDefault();
         return;
       }
+
+      // التحقق من اليوم
       if (!day) {
         alert("الرجاء اختيار يوم الحضور.");
         e.preventDefault();
         return;
       }
+
+      // التحقق من الوقت
       if (!time) {
-        alert("الرجاء اختيار رقم الفترة الزمنية.");
+        alert("الرجاء اختيار الوقت المناسب.");
         e.preventDefault();
         return;
       }
+
+      // التحقق من الموقع
       if (!location) {
         alert("الرجاء اختيار الموقع المفضل.");
         e.preventDefault();
         return;
       }
 
-      // إظهار رسالة النجاح
-      e.preventDefault(); // نمنع الإرسال الفوري لعرض الرسالة أولًا
-
+      // إخفاء النموذج وعرض رسالة النجاح
       const form = e.target;
       const successMsg = document.getElementById("successMessage");
 
-      // إخفاء النموذج
       form.style.display = "none";
-      // إظهار الرسالة
       successMsg.style.display = "block";
 
-      // يمكنك إزالة e.preventDefault() إذا كنت تريد الإرسال + عرض الرسالة (لكن Formspree سيعيد التوجيه)
-      // بديل: استخدم Formspree مع AJAX (يتطلب backend) — غير ممكن على GitHub Pages
-
-      // هنا: نعرض الرسالة، ثم نُرسل تلقائيًا بعد 1 ثانية
+      // إرسال النموذج بعد عرض الرسالة
       setTimeout(() => {
-        form.submit(); // إرسال النموذج بعد عرض الرسالة
+        form.submit();
       }, 1000);
     });
   </script>
