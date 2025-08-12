@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bold Routes - معرض عقاري مميز</title>
+  <meta name="description" content="Bold Routes - فرصتك للاستثمار العقاري عبر مسارات جريئة وعروض استثنائية مع كبرى الشركات العقارية."/>
+  
+  <!-- Google Fonts: Cairo للخطوط العربية -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet"/>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'gold': '#D4AF37',
+            'dark': '#121212',
+            'light': '#F8F8F8'
+          },
+          fontFamily: {
+            'cairo': ['Cairo', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body, html {
+      font-family: 'Cairo', sans-serif;
+    }
+    .hero-bg {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://placehold.co/1920x800/1a1a1a/D4AF37?text=معرض+BOLD+ROUTES') no-repeat center center/cover;
+    }
+    .btn-gold {
+      background-color: #D4AF37;
+      color: #000;
+      transition: all 0.3s ease;
+    }
+    .btn-gold:hover {
+      background-color: #f0d97c;
+      transform: translateY(-2px);
+    }
+    .partner-logo {
+      filter: brightness(0) invert(1);
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
+    }
+    .partner-logo:hover {
+      opacity: 1;
+    }
+    .exhibition-img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 0.75rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      border: 2px solid #D4AF37;
+    }
+    input, select {
+      direction: rtl;
+    }
+    .form-input:focus {
+      border-color: #D4AF37 !important;
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
+    }
+    #successMessage {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      background-color: #1a3d2a;
+      color: #a8e4b3;
+      border-radius: 0.5rem;
+      margin-top: 20px;
+      font-size: 1.1rem;
+      border: 1px solid #4CAF50;
+    }
+  </style>
+</head>
+<body class="bg-dark text-light min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="py-4 px-6 flex justify-between items-center bg-black shadow-lg relative">
+    <div class="text-gold text-3xl md:text-4xl font-bold tracking-wide relative group">
+      <span class="absolute -inset-1 rounded-lg bg-gradient-to-r from-gold/30 to-transparent blur opacity-0 group-hover:opacity-60 transition duration-300"></span>
+      <span class="relative">Bold Routes</span>
+    </div>
+    <nav>
+      <a href="#form" class="btn-gold px-6 py-2 rounded-full font-semibold text-sm hover:shadow-md transition">
+        سجل الآن
+      </a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-bg h-96 flex items-center justify-center text-center text-light">
+    <div class="container mx-auto px-6">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Bold Routes – مساراتك الجريئة نحو الاستثمار العقاري</h1>
+      <p class="text-lg md:text-xl opacity-90 mb-6">استكشف فرصًا استثمارية فريدة مع كبرى المطورين في مصر</p>
+      <a href="#form" class="btn-gold inline-block px-8 py-3 rounded-full font-bold text-lg transition transform hover:scale-105">
+        سجل الآن
+      </a>
+    </div>
+  </section>
+
+  <!-- الشركات المشاركة -->
+  <section class="py-12 bg-light text-dark">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-10">الشركات المشاركة</h2>
+      <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-80">
+        <img src="https://placehold.co/200x80/121212/gold?text=تطوير+مصر" alt="تطوير مصر" class="partner-logo h-8">
+        <img src="https://placehold.co/200x80/121212/gold?text=بالم+هيلز" alt="بالم هيلز" class="partner-logo h-8">
+        <img src="https://placehold.co/200x80/121212/gold?text=مونتن+فيو" alt="مونتن فيو" class="partner-logo h-8">
+        <img src="https://placehold.co/200x80/121212/gold?text=إيدج" alt="إيدج" class="partner-logo h-8">
+        <img src="https://placehold.co/200x80/121212/gold?text=سوديك" alt="سوديك" class="partner-logo h-8">
+      </div>
+    </div>
+  </section>
+
+  <!-- صورة واحدة للمعرض -->
+  <section class="py-16 bg-dark text-light">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8 text-gold">معرض Bold Routes - تجربة استثمارية فريدة</h2>
+      <img src="https://placehold.co/1200x600/222/D4AF37?text=معرض+BOLD+ROUTES+%7C+زوار+%2B+ممثلين+%7C+مشاريع+عقارية" 
+           alt="معرض عقاري Bold Routes" 
+           class="exhibition-img mx-auto">
+      <p class="text-center mt-6 text-gray-400">تجربة حية للاطلاع على أحدث المشاريع العقارية من كبرى الشركات</p>
+    </div>
+  </section>
+
+  <!-- المميزات -->
+  <section class="py-16 bg-light text-dark">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12">لماذا تحضر معرض Bold Routes؟</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center p-6 bg-white rounded-lg shadow-lg">
+          <div class="text-3xl mb-4">🎁</div>
+          <h3 class="text-xl font-semibold mb-2">عروض حصرية</h3>
+          <p class="text-gray-600">أسعار خاصة من المطورين فقط خلال المعرض.</p>
+        </div>
+        <div class="text-center p-6 bg-white rounded-lg shadow-lg">
+          <div class="text-3xl mb-4">💳</div>
+          <h3 class="text-xl font-semibold mb-2">تسهيلات حتى 15 سنة</h3>
+          <p class="text-gray-600">خطط سداد ميسرة تناسب جميع المستثمرين.</p>
+        </div>
+        <div class="text-center p-6 bg-white rounded-lg shadow-lg">
+          <div class="text-3xl mb-4">🚀</div>
+          <h3 class="text-xl font-semibold mb-2">مقدم 0%</h3>
+          <p class="text-gray-600">ابدأ رحلتك الاستثمارية بدون دفع مقدم.</p>
+        </div>
+        <div class="text-center p-6 bg-white rounded-lg shadow-lg">
+          <div class="text-3xl mb-4">📍</div>
+          <h3 class="text-xl font-semibold mb-2">مواقع متميزة</h3>
+          <p class="text-gray-600">وحدات في أبرز المدن: التجمع، الساحل، العاصمة، المستقبل.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- نموذج التسجيل -->
+  <section id="form" class="py-16 bg-dark text-light">
+    <div class="container mx-auto px-6">
+      <div class="max-w-4xl mx-auto bg-black p-8 rounded-xl shadow-2xl border border-gold/20">
+        <h2 class="text-3xl font-bold text-center mb-6 text-gold">احجز مكانك في معرض Bold Routes</h2>
+        <p class="text-center mb-8 text-gray-300">للاستفسارات: <span class="font-bold text-gold text-lg">01110570634</span></p>
+
+        <!-- نموذج التسجيل -->
+        <form id="registrationForm" action="https://formspree.io/f/xqalnqdg" method="POST">
+          <div class="mb-6">
+            <label for="name" class="block mb-2 font-medium">الاسم الكامل <span class="text-red-400">*</span></label>
+            <input type="text" id="name" name="name" required
+                   class="w-full form-input px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold"
+                   placeholder="أدخل اسمك الكامل"/>
+          </div>
+
+          <div class="mb-6">
+            <label for="phone" class="block mb-2 font-medium">رقم الهاتف <span class="text-red-400">*</span></label>
+            <input type="tel" id="phone" name="phone" required
+                   class="w-full form-input px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold"
+                   placeholder="01XXXXXXXXX"/>
+          </div>
+
+          <div class="mb-6">
+            <label for="email" class="block mb-2 font-medium">البريد الإلكتروني (اختياري)</label>
+            <input type="email" id="email" name="email"
+                   class="w-full form-input px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold"
+                   placeholder="example@domain.com"/>
+          </div>
+
+          <div class="mb-6">
+            <label for="propertyType" class="block mb-2 font-medium">نوع العقار الذي تبحث عنه</label>
+            <select id="propertyType" name="propertyType"
+                    class="w-full form-input px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold">
+              <option value="">اختر النوع</option>
+              <option value="شقة">شقة</option>
+              <option value="فيلا">فيلا</option>
+              <option value="عقار إداري">عقار إداري</option>
+              <option value="عقار تجاري">عقار تجاري</option>
+            </select>
+          </div>
+
+          <!-- اختيار اليوم -->
+          <div class="mb-6">
+            <label for="day" class="block mb-2 font-medium">اختر يوم الحضور</label>
+            <select id="day" name="day" required
+                    class="w-full form-input px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold">
+              <option value="">اختر اليوم</option>
+              <option value="22 فبراير">22 فبراير</option>
+              <option value="23 فبراير">23 فبراير</option>
+              <option value="24 فبراير">24 فبراير</option>
+              <option value="25 فبراير">25 فبراير</option>
+            </select>
+          </div>
+
+          <!-- اختيار الموقع -->
+          <div class="mb-6">
+            <label for="location" class="block mb-2 font-medium">اختر الموقع المفضل لديك</label>
+            <select id="location" name="location" required
+                    class="w-full form-input px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold">
+              <option value="">اختر الموقع</option>
+              <option value="القاهرة الجديدة (التجمع)">القاهرة الجديدة (التجمع)</option>
+              <option value="الساحل الشمالي">الساحل الشمالي</option>
+              <option value="العاصمة الإدارية">العاصمة الإدارية</option>
+              <option value="مدينة المستقبل">مدينة المستقبل</option>
+            </select>
+          </div>
+
+          <!-- اختيار الوقت كأرقام -->
+          <div class="mb-8">
+            <label for="time" class="block mb-2 font-medium">اختر رقم الفترة الزمنية (1 إلى 9)</label>
+            <select id="time" name="time" required
+                    class="w-full form-input px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold">
+              <option value="">اختر رقم الفترة</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+            </select>
+          </div>
+
+          <button type="submit"
+                  class="w-full btn-gold py-3 rounded-lg font-bold text-lg hover:bg-yellow-400 transition">
+            تسجيل
+          </button>
+        </form>
+
+        <!-- رسالة النجاح -->
+        <div id="successMessage">
+          ✅ تم التسجيل بنجاح! سيتم التواصل معك قريبًا لتأكيد الحجز.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-6 bg-black text-center text-gray-400 text-sm">
+    <p>&copy; 2025 Bold Routes. جميع الحقوق محفوظة.</p>
+    <p class="mt-2">للاستفسار: <span class="text-gold">01110570634</span></p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function (e) {
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const day = document.getElementById("day").value;
+      const time = document.getElementById("time").value;
+      const location = document.getElementById("location").value;
+
+      if (!name) {
+        alert("الرجاء إدخال الاسم الكامل.");
+        e.preventDefault();
+        return;
+      }
+      if (!phone) {
+        alert("الرجاء إدخال رقم الهاتف.");
+        e.preventDefault();
+        return;
+      }
+      if (!/^01[0-9]{9}$/.test(phone)) {
+        alert("الرجاء إدخال رقم هاتف مصري صحيح (11 رقم يبدأ بـ 01).");
+        e.preventDefault();
+        return;
+      }
+      if (!day) {
+        alert("الرجاء اختيار يوم الحضور.");
+        e.preventDefault();
+        return;
+      }
+      if (!time) {
+        alert("الرجاء اختيار رقم الفترة الزمنية.");
+        e.preventDefault();
+        return;
+      }
+      if (!location) {
+        alert("الرجاء اختيار الموقع المفضل.");
+        e.preventDefault();
+        return;
+      }
+
+      // إظهار رسالة النجاح
+      e.preventDefault(); // نمنع الإرسال الفوري لعرض الرسالة أولًا
+
+      const form = e.target;
+      const successMsg = document.getElementById("successMessage");
+
+      // إخفاء النموذج
+      form.style.display = "none";
+      // إظهار الرسالة
+      successMsg.style.display = "block";
+
+      // يمكنك إزالة e.preventDefault() إذا كنت تريد الإرسال + عرض الرسالة (لكن Formspree سيعيد التوجيه)
+      // بديل: استخدم Formspree مع AJAX (يتطلب backend) — غير ممكن على GitHub Pages
+
+      // هنا: نعرض الرسالة، ثم نُرسل تلقائيًا بعد 1 ثانية
+      setTimeout(() => {
+        form.submit(); // إرسال النموذج بعد عرض الرسالة
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
