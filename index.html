@@ -104,6 +104,23 @@
       font-size: 1.1rem;
       border: 1px solid #4CAF50;
     }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #25D366;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      z-index: 99;
+      transition: all 0.3s ease;
+    }
+    .whatsapp-float:hover {
+      background-color: #128C7E;
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body class="bg-dark text-light min-h-screen flex flex-col">
@@ -315,13 +332,19 @@
     <p class="mt-2">للاستفسار: <span class="text-gold">01110570634</span></p>
   </footer>
 
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/201110570634" class="whatsapp-float" target="_blank">
+    💬 تواصل معنا على واتساب
+  </a>
+
   <!-- JavaScript -->
   <script>
-    // العداد: 24 ساعة، ويتكرر تلقائيًا
+    // العداد: 24 ساعة، ويتكرر تلقائيًا من أول ما يفتح الموقع
     let timeLeft = 24 * 60 * 60; // 24 ساعة
     const countdown = document.getElementById("countdown");
     
-    const timer = setInterval(() => {
+    // تحديث العداد فورًا
+    function updateCountdown() {
       const hours = Math.floor(timeLeft / 3600);
       const minutes = Math.floor((timeLeft % 3600) / 60);
       const seconds = timeLeft % 60;
@@ -331,7 +354,11 @@
         timeLeft = 24 * 60 * 60; // إعادة التعيين تلقائيًا
       }
       timeLeft--;
-    }, 1000);
+    }
+
+    // تحديث كل ثانية
+    setInterval(updateCountdown, 1000);
+    updateCountdown(); // عرض القيمة فور التحميل
 
     // التحقق من النموذج
     document.getElementById("registrationForm").addEventListener("submit", function (e) {
