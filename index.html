@@ -144,7 +144,7 @@
       </p>
       
       <!-- Countdown -->
-      <div class="bg-black bg-opacity-70 p-6 rounded-lg inline-block mb-8">
+      <div id="countdownContainer" class="bg-black bg-opacity-70 p-6 rounded-lg inline-block mb-8">
         <p class="text-lg opacity-90">العرض ينتهي خلال:</p>
         <div id="countdown" class="countdown mt-2">24:00:00</div>
       </div>
@@ -300,6 +300,7 @@
               <option value="العاصمة">العاصمة</option>
               <option value="مدينة المستقبل">مدينة المستقبل</option>
               <option value="أكتوبر">أكتوبر</option>
+              <option value="دبي (إمارات)">دبي (إمارات)</option>
             </select>
           </div>
 
@@ -339,26 +340,54 @@
 
   <!-- JavaScript -->
   <script>
-    // العداد: 24 ساعة، ويتكرر تلقائيًا من أول ما يفتح الموقع
-    let timeLeft = 24 * 60 * 60; // 24 ساعة
-    const countdown = document.getElementById("countdown");
-    
-    // تحديث العداد فورًا
+    // عداد 24 ساعة - يحفظ الوقت في localStorage ولا يُعاد
+    const countdownEl = document.getElementById("countdown");
+    const countdownContainer = document.getElementById("countdownContainer");
+
+    let timeLeft;
+
+    // احصل على الوقت المتبقي من localStorage
+    const savedTime = localStorage.getItem("countdownTime");
+    const savedTimeDate = localStorage.getItem("countdownStartTime");
+
+    // إذا كان أول دخول، ابدأ من 24 ساعة
+    if (!savedTime || !savedTimeDate) {
+      timeLeft = 24 * 60 * 60; // 24 ساعة
+      localStorage.setItem("countdownTime", timeLeft);
+      localStorage.setItem("countdownStartTime", new Date().getTime());
+    } else {
+      const startTime = parseInt(savedTimeDate);
+      const elapsed = Math.floor((new Date().getTime() - startTime) / 1000);
+      timeLeft = Math.max(0, parseInt(savedTime) - elapsed);
+      localStorage.setItem("countdownTime", timeLeft); // تحديث الوقت
+    }
+
+    // تحديث العداد
     function updateCountdown() {
+      if (timeLeft <= 0) {
+        countdownContainer.innerHTML = "<p class='text-lg'>انتهى العرض</p>";
+        return;
+      }
+
       const hours = Math.floor(timeLeft / 3600);
       const minutes = Math.floor((timeLeft % 3600) / 60);
       const seconds = timeLeft % 60;
-      countdown.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      
-      if (timeLeft <= 0) {
-        timeLeft = 24 * 60 * 60; // إعادة التعيين تلقائيًا
-      }
+
+      countdownEl.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
       timeLeft--;
+
+      localStorage.setItem("countdownTime", timeLeft);
+
+      if (timeLeft < 0) {
+        countdownContainer.innerHTML = "<p class='text-lg'>انتهى العرض</p>";
+        localStorage.removeItem("countdownTime");
+        localStorage.removeItem("countdownStartTime");
+      }
     }
 
     // تحديث كل ثانية
     setInterval(updateCountdown, 1000);
-    updateCountdown(); // عرض القيمة فور التحميل
+    updateCountdown();
 
     // التحقق من النموذج
     document.getElementById("registrationForm").addEventListener("submit", function (e) {
