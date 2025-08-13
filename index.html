@@ -40,9 +40,11 @@
   <style>
     body, html {
       font-family: 'Cairo', sans-serif;
+      background-color: #121212;
+      color: #F8F8F8;
     }
     .hero-bg {
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://i.postimg.cc/3w41sVgN/Chat-GPT-Image-Aug-12-2025-03-34-15-PM.png') no-repeat center center/cover;
+      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://i.postimg.cc/3w41sVgN/Chat-GPT-Image-Aug-12-2025-03-34-15-PM.png') no-repeat center center/cover;
     }
     .btn-gold {
       background-color: #D4AF37;
@@ -58,34 +60,20 @@
       font-size: 1.2rem;
       font-weight: bold;
     }
-    .countdown {
-      font-family: 'Cairo', monospace;
+    .company-name {
+      font-size: 1.2rem;
       font-weight: bold;
       color: #D4AF37;
-      font-size: 2rem;
+      text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
     }
-    .company-item {
-      background: #1a1a1a;
-      border-right: 3px solid #D4AF37;
-    }
-    .partner-logo {
-      filter: brightness(0) invert(1);
-      opacity: 0.7;
-      transition: opacity 0.3s;
-    }
-    .partner-logo:hover {
-      opacity: 1;
-    }
-    .feature-item {
-      transition: transform 0.2s;
-    }
-    .feature-item:hover {
-      transform: translateY(-5px);
+    .company-name:hover {
+      color: #f0d97c;
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
     }
     input, select {
       direction: rtl;
     }
-    .form-input:focus {
+    .form-input:focus, .form-select:focus {
       border-color: #D4AF37 !important;
       box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2) !important;
     }
@@ -121,227 +109,38 @@
 </head>
 <body class="bg-dark text-light min-h-screen flex flex-col">
 
-  <!-- Header with CTA -->
-  <header class="py-3 px-6 bg-black text-center relative">
-    <div class="text-gold text-2xl font-bold tracking-wide">Bold Routes</div>
-    <a href="#form" class="btn-gold btn-large px-8 py-3 rounded-full font-bold mt-3 inline-block hover:shadow-lg transition">
-      سجل قبل انتهاء المدة
-    </a>
+  <!-- Header -->
+  <header class="py-4 px-6 bg-black text-center shadow-lg">
+    <div class="text-gold text-3xl md:text-4xl font-bold tracking-wide">Bold Routes</div>
+    <p class="text-light text-lg mb-4">أكبر معرض عقاري يجمع كبرى المطورين في مصر ودبي</p>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero-bg h-screen flex items-center justify-center text-center text-light px-6">
-    <div class="max-w-4xl mx-auto">
-      <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-        احجز وحدتك بأقل قسط شهري
-      </h1>
-      <p class="text-2xl md:text-3xl text-gold font-bold mb-8">
-        ✅ خصم 500 ألف على أي وحدة لأول 100 عميل فقط
-      </p>
-      
-      <!-- Countdown -->
-      <div id="countdownContainer" class="bg-black bg-opacity-70 p-6 rounded-lg inline-block mb-8">
-        <p class="text-lg opacity-90">العرض ينتهي خلال:</p>
-        <div id="countdown" class="countdown mt-2">24:00:00</div>
-        <p class="text-sm text-blue-200 mt-1">⏳ العداد شخصي لكل جهاز - لا تُفرّط في الفرصة</p>
-      </div>
-
-      <a href="#form" class="btn-gold btn-large px-10 py-4 rounded-full font-bold text-xl hover:shadow-2xl transition transform hover:scale-105 block md:inline-block">
-        سجل قبل انتهاء المدة
-      </a>
-    </div>
-  </section>
-
-  <!-- Companies Section -->
-  <section class="py-16 bg-light text-dark">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-12">أبرز الشركات المشاركة في المعرض</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-        <div class="company-item p-4 rounded-lg text-center">
-          <div class="text-2xl font-bold">Palm Hills</div>
-          <p class="text-gray-600">مشاريع متميزة في الشيخ زايد والتجمع</p>
-        </div>
-        <div class="company-item p-4 rounded-lg text-center">
-          <div class="text-2xl font-bold">Mountain View</div>
-          <p class="text-gray-600">مطور عقاري رائد في العاصمة الإدارية</p>
-        </div>
-        <div class="company-item p-4 rounded-lg text-center">
-          <div class="text-2xl font-bold">SODIC</div>
-          <p class="text-gray-600">مشاريع فاخرة في أرقى مواقع مصر</p>
-        </div>
-        <div class="company-item p-4 rounded-lg text-center">
-          <div class="text-2xl font-bold">Tatweer Masr</div>
-          <p class="text-gray-600">مطور عقاري حديث بمشاريع مبتكرة</p>
-        </div>
-        <div class="company-item p-4 rounded-lg text-center">
-          <div class="text-2xl font-bold">O West</div>
-          <p class="text-gray-600">مشاريع سكنية وتجارية في التجمع</p>
-        </div>
-        <div class="company-item p-4 rounded-lg text-center">
-          <div class="text-2xl font-bold">Marakez</div>
-          <p class="text-gray-600">مطور رئيسي في الساحل الشمالي</p>
-        </div>
-        <div class="company-item p-4 rounded-lg text-center">
-          <div class="text-2xl font-bold">La Vista</div>
-          <p class="text-gray-600">مشاريع سكنية متكاملة في أكتوبر</p>
-        </div>
-        <div class="company-item p-4 rounded-lg text-center">
-          <div class="text-2xl font-bold">Aspect</div>
-          <p class="text-gray-600">تطوير عقاري حديث بتصاميم عالمية</p>
-        </div>
-        <div class="company-item p-4 rounded-lg text-center">
-          <div class="text-2xl font-bold">Pre</div>
-          <p class="text-gray-600">مطور عقاري ناشئ بمشاريع ذكية</p>
-        </div>
-        <div class="company-item p-4 rounded-lg text-center">
-          <div class="text-2xl font-bold">Ahly Sabour</div>
-          <p class="text-gray-600">مشاريع سكنية وعائلية متكاملة</p>
-        </div>
-        <div class="company-item p-4 rounded-lg text-center">
-          <div class="text-2xl font-bold">Hayat Park</div>
-          <p class="text-gray-600">مجمعات سكنية فاخرة في العاصمة</p>
-        </div>
-        <div class="company-item p-4 rounded-lg text-center">
-          <div class="text-2xl font-bold">Misr Italia</div>
-          <p class="text-gray-600">مطور رئيسي لمشروع "إليزيوم"</p>
-        </div>
-        <div class="company-item p-4 rounded-lg text-center">
-          <div class="text-2xl font-bold">Il Qamzi</div>
-          <p class="text-gray-600">مشاريع فاخرة في موقع متميز</p>
-        </div>
-        <div class="company-item p-4 rounded-lg text-center">
-          <div class="text-2xl font-bold">CRED</div>
-          <p class="text-gray-600">تطوير عقاري بتصاميم عصرية</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Features with Villa Price -->
-  <section class="py-16 bg-dark text-light">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-12 text-gold">مميزات المعرض</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-        <div class="feature-item p-6 bg-gray-900 rounded-lg">
-          <div class="text-3xl mb-3">🏠</div>
-          <h3 class="text-xl font-semibold mb-2">سعر الفيلات تبدأ من 13 مليون جنيه</h3>
-          <p class="text-gray-300">بتسهيلات تصل إلى 15 سنة ومقدم 0%</p>
-        </div>
-        <div class="feature-item p-6 bg-gray-900 rounded-lg">
-          <div class="text-3xl mb-3">🎁</div>
-          <h3 class="text-xl font-semibold mb-2">خصم 500 ألف</h3>
-          <p class="text-gray-300">على أي وحدة لأول 100 عميل فقط</p>
-        </div>
-        <div class="feature-item p-6 bg-gray-900 rounded-lg">
-          <div class="text-3xl mb-3">📍</div>
-          <h3 class="text-xl font-semibold mb-2">مواقع متميزة</h3>
-          <p class="text-gray-300">العاصمة، التجمع، الساحل، أكتوبر، دبي</p>
-        </div>
-        <div class="feature-item p-6 bg-gray-900 rounded-lg">
-          <div class="text-3xl mb-3">📅</div>
-          <h3 class="text-xl font-semibold mb-2">تسهيلات حتى 15 سنة</h3>
-          <p class="text-gray-300">خطط سداد ميسرة تناسب جميع المستثمرين</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Social Proof: 5 Real Testimonials -->
-  <section class="py-16 bg-light text-dark">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-12">أراء الزائرين من المعارض السابقة</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-        <div class="testimonial-card p-6 rounded-lg">
-          <p class="text-gray-600 italic">"العرض كان حقيقي، وحصلت على شقة في التجمع بخصم 520 ألف. المعرض منظم جدًا."</p>
-          <div class="flex items-center mt-4">
-            <img src="https://picsum.photos/id/1012/60/60" alt="أحمد محمد" class="w-10 h-10 rounded-full ml-3 object-cover">
-            <div>
-              <h4 class="font-semibold">أحمد محمد</h4>
-              <p class="text-sm text-gray-500">زائر سابق - فبراير 2025</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card p-6 rounded-lg">
-          <p class="text-gray-600 italic">"تواصلت مع ممثل بالم هيلز وحجزت فيلا في الساحل خلال 10 دقائق. العروض كانت ممتازة."</p>
-          <div class="flex items-center mt-4">
-            <img src="https://picsum.photos/id/1027/60/60" alt="سارة علي" class="w-10 h-10 rounded-full ml-3 object-cover">
-            <div>
-              <h4 class="font-semibold">سارة علي</h4>
-              <p class="text-sm text-gray-500">زائرة سابقة - يناير 2025</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card p-6 rounded-lg">
-          <p class="text-gray-600 italic">"أفضل معرض شاركت فيه. كل الشركات كانت حاضرة، والأسعار كانت أقل من السوق."</p>
-          <div class="flex items-center mt-4">
-            <img src="https://picsum.photos/id/1074/60/60" alt="محمود فتحي" class="w-10 h-10 rounded-full ml-3 object-cover">
-            <div>
-              <h4 class="font-semibold">محمود فتحي</h4>
-              <p class="text-sm text-gray-500">زائر سابق - ديسمبر 2024</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card p-6 rounded-lg">
-          <p class="text-gray-600 italic">"التنظيم محترم، والموظفين متعاونين. حجزت وحدة إدارية في العاصمة بسعر مميز."</p>
-          <div class="flex items-center mt-4">
-            <img src="https://picsum.photos/id/1062/60/60" alt="نورا سعيد" class="w-10 h-10 rounded-full ml-3 object-cover">
-            <div>
-              <h4 class="font-semibold">نورا سعيد</h4>
-              <p class="text-sm text-gray-500">زائرة سابقة - نوفمبر 2024</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card p-6 rounded-lg">
-          <p class="text-gray-600 italic">"كنت متردد، لكن بعد ما شفت المشاريع، قررت فورًا. المعرض يستحق الزيارة."</p>
-          <div class="flex items-center mt-4">
-            <img src="https://picsum.photos/id/1011/60/60" alt="خالد عبد الله" class="w-10 h-10 rounded-full ml-3 object-cover">
-            <div>
-              <h4 class="font-semibold">خالد عبد الله</h4>
-              <p class="text-sm text-gray-500">زائر سابق - أكتوبر 2024</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Form Section -->
-  <section id="form" class="py-16 bg-dark text-light">
-    <div class="container mx-auto px-6">
-      <div class="max-w-4xl mx-auto bg-black p-8 rounded-xl shadow-2xl border border-gold/20">
-        <h2 class="text-3xl font-bold text-center mb-4 text-gold">سارع بالحجز قبل نفاد الفرصة!</h2>
-        <p class="text-center text-gray-300 mb-8">أول 100 عميل يحصلوا على خصم 500 ألف فورًا</p>
+  <!-- Simple Registration Form - At the Top -->
+  <section class="py-8 bg-dark text-light">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <div class="bg-black p-6 rounded-xl shadow-2xl border border-gold/20 text-center">
+        <h2 class="text-2xl font-bold mb-4 text-gold">سجل الآن واحجز وحدتك</h2>
+        <p class="text-gray-300 mb-6">أول 100 عميل يحصلوا على خصم 500 ألف فوري</p>
 
         <form id="registrationForm" action="https://formspree.io/f/xqalnqdg" method="POST">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <input type="text" name="name" placeholder="الاسم الكامل *" required
-                   class="form-input px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold">
-            <input type="tel" name="phone" placeholder="رقم الهاتف *" required
-                   class="form-input px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold">
-          </div>
-          <input type="email" name="email" placeholder="البريد الإلكتروني (اختياري)"
-                 class="w-full form-input px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold mb-6">
+                   class="form-input px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold text-right">
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <select name="propertyType" required class="form-input px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold">
+            <input type="tel" name="phone" placeholder="رقم الهاتف *" required
+                   class="form-input px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold text-right">
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <select name="propertyType" required class="form-select px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold text-right">
               <option value="">نوع العقار</option>
               <option value="شقة">شقة</option>
               <option value="فيلا">فيلا</option>
               <option value="إداري">إداري</option>
               <option value="تجاري">تجاري</option>
             </select>
-            <select name="day" required class="form-input px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold">
-              <option value="">اليوم</option>
-              <option value="22 فبراير">22 فبراير</option>
-              <option value="23 فبراير">23 فبراير</option>
-              <option value="24 فبراير">24 فبراير</option>
-              <option value="25 فبراير">25 فبراير</option>
-            </select>
-            <select name="location" required class="form-input px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold">
+
+            <select name="location" required class="form-select px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold text-right">
               <option value="">الموقع</option>
               <option value="التجمع">التجمع</option>
               <option value="الساحل">الساحل</option>
@@ -353,7 +152,7 @@
           </div>
 
           <button type="submit" class="w-full btn-gold btn-large py-4 rounded-lg font-bold text-xl hover:bg-yellow-400 transition">
-            سجل قبل انتهاء المدة
+            ✅ سجل الآن - احجز وحدتك
           </button>
         </form>
 
@@ -364,13 +163,93 @@
     </div>
   </section>
 
+  <!-- Hero Section -->
+  <section class="hero-bg h-screen flex items-center justify-center text-center text-light px-6">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight text-white">
+        سعر الفيلات تبدأ من <span class="text-gold">13 مليون جنيه</span>
+      </h1>
+      <p class="text-2xl md:text-3xl text-gold font-bold mb-8">
+        ✅ خصم 500 ألف على أي وحدة لأول 100 عميل فقط
+      </p>
+      <a href="#registrationForm" class="btn-gold btn-large px-12 py-4 rounded-full font-bold text-xl hover:shadow-2xl transition transform hover:scale-105 block md:inline-block">
+        سجل الآن
+      </a>
+    </div>
+  </section>
+
+  <!-- Companies Section - Names Only -->
+  <section class="py-16 bg-dark text-center">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gold">الشركات المشاركة في المعرض</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div class="p-4"><div class="company-name">Palm Hills</div></div>
+        <div class="p-4"><div class="company-name">Mountain View</div></div>
+        <div class="p-4"><div class="company-name">SODIC</div></div>
+        <div class="p-4"><div class="company-name">Tatweer Masr</div></div>
+        <div class="p-4"><div class="company-name">O West</div></div>
+        <div class="p-4"><div class="company-name">Marakez</div></div>
+        <div class="p-4"><div class="company-name">La Vista</div></div>
+        <div class="p-4"><div class="company-name">Aspect</div></div>
+        <div class="p-4"><div class="company-name">Pre</div></div>
+        <div class="p-4"><div class="company-name">Ahly Sabour</div></div>
+        <div class="p-4"><div class="company-name">Hayat Park</div></div>
+        <div class="p-4"><div class="company-name">Misr Italia</div></div>
+        <div class="p-4"><div class="company-name">Il Qamzi</div></div>
+        <div class="p-4"><div class="company-name">CRED</div></div>
+        <div class="p-4"><div class="company-name">Dubai Properties</div></div>
+        <div class="p-4"><div class="company-name">Emaar</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="py-16 bg-light text-dark">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12 text-gold">مميزات الحجز في المعرض</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="p-6 bg-white rounded-lg shadow-lg text-center">
+          <div class="text-3xl mb-3">🏠</div>
+          <h3 class="text-xl font-semibold mb-2">سعر الفيلات تبدأ من 13 مليون</h3>
+          <p class="text-gray-600">بتسهيلات تصل إلى 15 سنة ومقدم 0%</p>
+        </div>
+        <div class="p-6 bg-white rounded-lg shadow-lg text-center">
+          <div class="text-3xl mb-3">🎁</div>
+          <h3 class="text-xl font-semibold mb-2">خصم 500 ألف فوري</h3>
+          <p class="text-gray-600">للعملاء المسجلين أول 100 عميل فقط</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-16 bg-dark text-light">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-12">أراء الزائرين من المعارض السابقة</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div class="p-6 bg-gray-900 rounded-lg">
+          <p class="text-gray-300 italic">"العرض كان حقيقي، وحصلت على شقة في التجمع بخصم 520 ألف."</p>
+          <p class="font-semibold mt-3">— أحمد محمد</p>
+        </div>
+        <div class="p-6 bg-gray-900 rounded-lg">
+          <p class="text-gray-300 italic">"تواصلت مع ممثل بالم هيلز وحجزت فيلا في الساحل خلال 10 دقائق."</p>
+          <p class="font-semibold mt-3">— سارة علي</p>
+        </div>
+        <div class="p-6 bg-gray-900 rounded-lg">
+          <p class="text-gray-300 italic">"أفضل معرض شاركت فيه. كل الشركات كانت حاضرة."</p>
+          <p class="font-semibold mt-3">— محمود فتحي</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Final CTA -->
   <section class="py-12 bg-gold text-dark text-center">
     <div class="container mx-auto px-6">
       <h2 class="text-3xl font-bold mb-4">لا تفوت الفرصة!</h2>
       <p class="text-xl mb-6">العرض ينتهي قريبًا، والخصم محدود لأول 100 عميل فقط</p>
-      <a href="#form" class="bg-black text-gold btn-large px-10 py-4 rounded-full font-bold inline-block hover:bg-gray-800 transition">
-        سجل قبل انتهاء المدة
+      <a href="#registrationForm" class="bg-black text-gold btn-large px-10 py-4 rounded-full font-bold inline-block hover:bg-gray-800 transition">
+        سجل الآن
       </a>
     </div>
   </section>
@@ -388,61 +267,11 @@
 
   <!-- JavaScript -->
   <script>
-    // عداد 24 ساعة - يحفظ الوقت في localStorage ولا يُعاد
-    const countdownEl = document.getElementById("countdown");
-    const countdownContainer = document.getElementById("countdownContainer");
-
-    let timeLeft;
-
-    // احصل على الوقت المتبقي من localStorage
-    const savedTime = localStorage.getItem("countdownTime");
-    const savedTimeDate = localStorage.getItem("countdownStartTime");
-
-    // إذا كان أول دخول، ابدأ من 24 ساعة
-    if (!savedTime || !savedTimeDate) {
-      timeLeft = 24 * 60 * 60; // 24 ساعة
-      localStorage.setItem("countdownTime", timeLeft);
-      localStorage.setItem("countdownStartTime", new Date().getTime());
-    } else {
-      const startTime = parseInt(savedTimeDate);
-      const elapsed = Math.floor((new Date().getTime() - startTime) / 1000);
-      timeLeft = Math.max(0, parseInt(savedTime) - elapsed);
-      localStorage.setItem("countdownTime", timeLeft); // تحديث الوقت
-    }
-
-    // تحديث العداد
-    function updateCountdown() {
-      if (timeLeft <= 0) {
-        countdownContainer.innerHTML = "<p class='text-lg'>انتهى العرض</p>";
-        return;
-      }
-
-      const hours = Math.floor(timeLeft / 3600);
-      const minutes = Math.floor((timeLeft % 3600) / 60);
-      const seconds = timeLeft % 60;
-
-      countdownEl.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      timeLeft--;
-
-      localStorage.setItem("countdownTime", timeLeft);
-
-      if (timeLeft < 0) {
-        countdownContainer.innerHTML = "<p class='text-lg'>انتهى العرض</p>";
-        localStorage.removeItem("countdownTime");
-        localStorage.removeItem("countdownStartTime");
-      }
-    }
-
-    // تحديث كل ثانية
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-
     // التحقق من النموذج
     document.getElementById("registrationForm").addEventListener("submit", function (e) {
       const name = document.querySelector("input[name='name']").value.trim();
       const phone = document.querySelector("input[name='phone']").value.trim();
       const propertyType = document.querySelector("select[name='propertyType']").value;
-      const day = document.querySelector("select[name='day']").value;
       const location = document.querySelector("select[name='location']").value;
 
       if (!name) {
@@ -455,10 +284,6 @@
       }
       if (!propertyType) {
         alert("الرجاء اختيار نوع العقار.");
-        e.preventDefault(); return;
-      }
-      if (!day) {
-        alert("الرجاء اختيار يوم الحضور.");
         e.preventDefault(); return;
       }
       if (!location) {
